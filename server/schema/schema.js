@@ -54,7 +54,6 @@ const UserType = new GraphQLObjectType({
           name: {type: GraphQLString},
           age: {type: GraphQLInt},
           profession: {type: GraphQLString},
-
           posts: {
                type: new GraphQLList(PostType),
                resolve(parent, args) {
@@ -83,7 +82,7 @@ const HobbyType = new GraphQLObjectType({
     description: 'Hobby description',
     fields: () => ({
         id: {type: GraphQLID},
-        title: {type: GraphQLString},
+        title: {type: GraphQLNotNull(GraphQLString)},
         description: {type: GraphQLString},
         user: {
             type: UserType,
@@ -105,13 +104,9 @@ const PostType = new GraphQLObjectType({
          user: {
               type: UserType,
               resolve(parent, args) {
-            
-                return User.findById(parent.userId);
-            
-                   
+                return User.findById(parent.userId);       
               }
          }
-        
     })
 });
 

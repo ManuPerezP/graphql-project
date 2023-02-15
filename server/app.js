@@ -1,4 +1,4 @@
-const pwd = "dichone7";
+const pwd = "add_your_password";
 const express = require('express');
 const graphglHTTP = require('express-graphql');
 const mongoose = require('mongoose');
